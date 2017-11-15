@@ -587,7 +587,7 @@ class Kubernetespawner(Spawner):
     self.log.debug('Starting Kubernetespawner  %s ', pod_manifest)
     response = yield self.session.post(self._get_pod_url(),
                                    data=json.dumps(pod_manifest),
-                                   timeout=180)
+                                   timeout=360)
     if response.status_code >= 400:
       self.log.error("Error starting container response: %s", response)
     else:
